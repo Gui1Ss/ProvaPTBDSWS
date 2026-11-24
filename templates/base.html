@@ -2,11 +2,34 @@
 
 {% block title %}Avaliação semestral{% endblock %}
 
+{% block styles %}
+{{ super() }}
+<style>
+    .cabecalho {
+        background-color: #222222;
+        border-color: #080808;
+    }
+    .cabecalho .nav > li > a {
+        color: #9d9d9d;
+    }
+    .cabecalho .nav > li > a:hover,
+    .cabecalho .nav > li > a:focus {
+        color: #ffffff;
+        background-color: transparent;
+    }
+    .cabecalho .nav > li:first-child > a {
+        font-size: 18px;
+        line-height: 20px;
+        padding-left: 0;
+    }
+</style>
+{% endblock %}
+
 {% block navbar %}
-<nav class="navbar navbar-default">
+<nav class="navbar cabecalho">
     <div class="container">
         <ul class="nav navbar-nav">
-            <li><a href="{{ url_for('index') }}"><strong>Avaliação semestral</strong></a></li>
+            <li><a href="{{ url_for('index') }}">Avaliação semestral</a></li>
             <li><a href="{{ url_for('professores') }}">Cadastro de Professores</a></li>
             <li><a href="/disciplinas">Cadastro de Disciplinas</a></li>
             <li><a href="/alunos">Cadastro de Alunos</a></li>
@@ -35,3 +58,4 @@
 {{ moment.include_moment() }}
 {{ moment.locale('pt-br') }}
 {% endblock %}
+
