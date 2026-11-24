@@ -1,0 +1,37 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Avaliação semestral{% endblock %}
+
+{% block navbar %}
+<nav class="navbar navbar-default">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li><a href="{{ url_for('index') }}"><strong>Avaliação semestral</strong></a></li>
+            <li><a href="{{ url_for('professores') }}">Cadastro de Professores</a></li>
+            <li><a href="/disciplinas">Cadastro de Disciplinas</a></li>
+            <li><a href="/alunos">Cadastro de Alunos</a></li>
+            <li><a href="/cursos">Cadastro de Cursos</a></li>
+            <li><a href="/ocorrencias">Cadastro de Ocorrências</a></li>
+        </ul>
+    </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{{ moment.include_moment() }}
+{{ moment.locale('pt-br') }}
+{% endblock %}
